@@ -129,13 +129,11 @@ module.exports = {
      *  multiply(3)(5); // return 15
      */
     multiply: function (val) { 
-        // return function (valOne) {
-        //         let num = valOne;
-        //         return num;
-        //         return function (valTwo) {
-        //                 let numTwo = valTwo;
-        //                 //return num * val
-        //         }
+                let num = val;
+                return function (valTwo) {
+                        let numTwo = valTwo;
+                        return num * numTwo;
+                 }
         //         return numTwo * num
         //     }
         // return function (val) { // return a function with one input
