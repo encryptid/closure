@@ -1,5 +1,7 @@
 module.exports = {
     /**
+     * GET TWO WORKING.
+     * 
      * Return an object with a next() property. Each time the next function
      * is called the value returned is one higher than the time before.
      *
@@ -48,18 +50,26 @@ module.exports = {
      *  user.getName();                 // return 'Francis Bacon'
      */
     user: function () {
-
-        // return {
-        //     setName(person) { // create a function that "sets" the name of the user, presumably by returning it
-        //                         // we'll be passing thru Francis Bacon in the example
-        //         let name = new RegExp('^[A-Za-z ]+$').test(person); //create a variable that is the result fitness of name
-        //         if (name === true)                                // if the name passes the RegEx (is equal to true)
-        //         return true;                                      // return true
-        //         }           // how does this "set" the user name? How do I get this to closure into getName()
-        // }               // in order to call it?
-        // (function getName() {
-        //     return 
-        //     }())
+        //let individual = [];
+        return {
+            individual: "",
+            setName(person) { // create a function that "sets" the name of the user, presumably by returning it
+                                // we'll be passing thru Francis Bacon in the example
+                let name = new RegExp('^[A-Za-z ]+$').test(person); //create a variable that is the result fitness of name
+                     if (name === true) { // if the name passes the RegEx (is equal to true)
+                    //     return name;
+                        individual = person;
+                        //result = true;
+                        return name;        // return true
+                     } else {
+                         return false;
+                     }
+                },
+            getName() {
+                return individual;
+                }
+            
+        }
     },
 
     /**
@@ -74,15 +84,21 @@ module.exports = {
      *  console.log(lives.left()); // 5
      */
     lives: function (start) {
+        let newGame = start;
         return {
-            left() {
-                return start;
-            }
-            //died(num) {
-            //return left - 1
-            }
+            left () {
+                return newGame;
+            },
+            
+            died () {
+                 newGame = (newGame - 1);
+                return newGame;
+            },
 
-        
+            restart () {
+                newGame = start;
+            }
+        }
     },
 
     /**
@@ -134,14 +150,5 @@ module.exports = {
                         let numTwo = valTwo;
                         return num * numTwo;
                  }
-        //         return numTwo * num
-        //     }
-        // return function (val) { // return a function with one input
-        //     let num = val        // return value of input
-        //     return  function(val) {  // within that function, return another function with one input
-        //         let numTwo = val     // return value of input (at this point, the second input?)
-        //         return num * numTwo  // return value of two inputs, multiplied by each other
-        //     }
-        // }
     },
 };
